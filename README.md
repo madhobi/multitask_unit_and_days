@@ -12,9 +12,15 @@ In this multi-task learning model, we train the model to predict:<br>
 
 The model inputs get updated on a daily basis and generates prediction accordingly.
 
+## Data
+
+The dataset contains six years of health records starting from January 2016 and December 2021. Considering the execution time for training and testing, we have divided it for each year resulting in six datasets. 
+
 ## Running the code
 
-The starting point of the code is main.py. It is specifically desinged to take input from the user based on the EHR data that we are using. The dataset contains six years of health records starting from January 2016 and December 2021. Considering the execution time of train and test, we have divided it for each year resulting in six datasets. Executing the main.py will ask the user whether she wants to train a model or wants to test the model that was previously trained. The user can also do both by selecting a dataset(train and test). Depending on the user input, the code will train model, save the model with its weight vectors and subsequently plot the evaluation metrics.
+The code is specifically desinged to take input from the user based on the EHR data that we are using. Executing the code will ask the user whether she wants to train a model or wants to test the model that was previously trained. The user can also do both by selecting a dataset(train and test). Depending on the user input, the code will train and/or test model, save the model with its weight vectors and subsequently plot the evaluation metrics.
+
+The starting point of the code is main.py. It takes the user input and then goes to run_experiment. The DataManager class prepares inputs depending on the user specified dataset. Then MultiTaskModel class handles the model building/training/testing. The default configurations are stored in config.py file. 
 
 Since there are two different types of tasks, our evaluation metrics are set accordingly. Prediction of next unit label is a classification task, our evaluation metrics for this task are accuracy and top-k accuracy (k=2). Prediction of remaining length of stay is a regression task, our evaluation metrics in this case is mean absolute error, mean squared error and root mean squared error. The MAE and Top-k accuracy values are plotted and saved in the image folder to show the model performance on test data. The history of the training time is saved in the hist_log folder.
 
