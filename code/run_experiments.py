@@ -4,7 +4,8 @@ import DataManager as dm
 import config as cf
 from plot_functions_from_model_predictions import *
 from keras.utils import plot_model
-
+from sklearn import metrics
+from datetime import datetime
 
 
 
@@ -43,13 +44,33 @@ def test_model(datahandler, test_pid, train_year, model=None, model_path=None):
     y_nextunit_cat = test_y[1]
     pdemo_shape = pdemos.shape[1]
     max_seq_len = datahandler.max_seq_len#30
-    total_units = datahandler.total_units
-    units = datahandler.units
-    unitname = units[['nhsnunitid', 'nhsnunitname']].copy()    
+    # total_units = datahandler.total_units
+    # units = datahandler.units
+    # unitname = units[['nhsnunitid', 'nhsnunitname']].copy()    
     
     y_dr_pred, y_nu_pred = trained_model.predict(x=(pdemos, input_seq_unit), batch_size=1)
+
+    mae = metrics.mean_absolute_error(y_days_remaining, y_dr_pred)
+    mse = metrics.mean_squared_error(y_days_remaining, y_dr_pred)
+    rmse = metrics.mean_squared_error(y_days_remaining, y_dr_pred, squared=False)
+    # Print results
+    print("mae: ", mae)
+    print("mse: ", mse)
+    print("rmse: ", rmse)
+
+    y_true = np.argmax(y_nextunit_cat, axis=1)
+    y_pred = y_nu_pred
+    topkacc = metrics.top_k_accuracy_score(y_true, y_pred, k=2, labels=range(35))
+    y_pred1d = np.argmax(y_pred, axis=1)
+    acc = metrics.accuracy_score(y_true, y_pred1d)
+    print('acc: ', str(acc))
+    print('topkacc(k=2): ', str(topkacc))
+    print(metrics.classification_report(y_true, y_pred1d))
     
-    plot_model_pred(test_all_feat, y_dr_pred, y_nu_pred, y_nextunit_cat, train_year, datahandler.filters, unitname)
+    # print('------------------------------------------------------------')
+    # print('--------calling plot function---------')
+    
+    # plot_model_pred(test_all_feat, y_dr_pred, y_nu_pred, y_nextunit_cat, train_year, datahandler.filters, unitname)
     
 
 def train_model(filters=None, test=False, test_size=None): 
@@ -73,14 +94,19 @@ def train_model(filters=None, test=False, test_size=None):
     # pdemo_shape, max_unit_len, total_units = 357, 30, 35 # random values for testing
     model_mt = mymodel.create_model_multitask(pdemo_shape, max_seq_len, total_units)
     print(model_mt.summary())
-    plot_model(model_mt, to_file='../images/model_mt_train_year_'+str(filters['adm_year'])+'.png', show_shapes=True, show_layer_names=True)    
+    # plot_model(model_mt, to_file='../images/model_mt_train_year_'+str(filters['adm_year'])+'.png', show_shapes=True, show_layer_names=True)    
     epoch, hist = mymodel.train_model_multitask(model_mt, pdemos, input_seq_unit, y_days_remaining, y_nextunit_cat)
     
     mymodel.set_model(model_mt)
+    # now = datetime.now() # current date and time
+    # timestamp = now.strftime("%m_%d_%Y_%H_%M_%S")
     savepath = '../saved_model/'
-    save_filename = 'model_mt_adult_year'+str(filters['adm_year'])
+    print('..............................................')
+    save_filename = 'model_mt_'+filters['age_cat']+'_year_'+str(filters['adm_year'])#+timestamp
+    print('saving the trained model with filename', save_filename)
+    print('..............................................')
     mymodel.save_model(savepath, save_filename)
-    print('saved model as ', save_filename )
+    print('saved model in location ', savepath+save_filename )
     
     hist_savepath = '../hist_log/'
     hist_filename = 'hist_mt_'+str(filters['age_cat'])\
@@ -90,4 +116,5 @@ def train_model(filters=None, test=False, test_size=None):
     if(test==True):
         print('Calling test model function to evaluate model result in test data..')
         # test_model(datahandler,test_pid, model_mt)
+        train_year = filters['adm_year']
         test_model(datahandler, test_pid, train_year, model=model_mt)
