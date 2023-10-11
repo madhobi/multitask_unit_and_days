@@ -75,7 +75,9 @@ class DataManager:
         print('bf shape: ', bf.shape)
         
         diag_filepath = (filepaths['parent_data_folder']
-                +filepaths['diag_filename'])
+                +filepaths['diag_folder']
+                +filepaths['diag_filename']
+                +filepaths['diag_filetype'])
         # diag = pd.read_pickle(filepaths['diag_filepath'])
         diag = pd.read_pickle(diag_filepath)
         self.diag = diag.copy()
@@ -84,6 +86,7 @@ class DataManager:
         pdemo_filepath = (filepaths['parent_data_folder']
                 +filepaths['pdemo_folder']
                 +filepaths['pdemo_file_prefix']
+                +str(filters['age_cat']) + '_year_'                
                 +str(filters['adm_year'])
                 +filepaths['pdemo_filetype'])
         # pdemo_enc = pd.read_pickle(filepaths['pdemo_enc_filepath'])
@@ -91,10 +94,10 @@ class DataManager:
         self.pdemo_enc = pdemo_enc.copy()
         print('pdemo enc shape: ', pdemo_enc.shape)
 
-        pid_filepath = (filepaths['parent_data_folder']
-                +filepaths['pid_folder']
+        pid_filepath = (filepaths['parent_data_folder']                
                 +filepaths['pid_file_prefix']
-                +str(filters['age_cat'])
+                +str(filters['age_cat']) + '_year_'
+                +str(filters['adm_year'])
                 +filepaths['pid_filetype'])
         # pdemo_pid = pd.read_pickle(filepaths['pdemo_pid_filepath'])
         pdemo_pid = pd.read_pickle(pid_filepath)
@@ -105,9 +108,9 @@ class DataManager:
                 +filepaths['unit_filename']
                 +filepaths['unit_filetype'])
         # units = pd.read_csv('./data/nhsnunitid_with_tokindex_and_unitcat.csv')
-        units = pd.read_csv(unit_filepath)
-        self.units = units.copy()
-        print(units.shape)
+        # units = pd.read_csv(unit_filepath)
+        # self.units = units.copy()
+        # print(units.shape)
 
         tok_filepath = (filepaths['parent_data_folder']
                 +filepaths['tok_filename']
@@ -119,7 +122,7 @@ class DataManager:
         self.total_units = len(tok_unit.word_index)+1
         # total_units
         
-        udict = dict(zip(units.nhsnunitid, units.nhsnunitname))
+        # udict = dict(zip(units.nhsnunitid, units.nhsnunitname))
         
     def get_pid(self, filters=None, test_size=None):
     
@@ -127,10 +130,10 @@ class DataManager:
         if(filters==None):
             filters=self.filters
         print('pid shape original: ', pid.shape)
-        for key in filters:
-            print('filtering for: ', key, '->', filters[key])
-            pid = pid[(pid[key] == filters[key])].copy()
-            print('shape after filtering: ', pid.shape)
+        # for key in filters:
+        #     print('filtering for: ', key, '->', filters[key])
+        #     pid = pid[(pid[key] == filters[key])].copy()
+        #     print('shape after filtering: ', pid.shape)
 
         pid = pid[self.key_cols].copy()
         
