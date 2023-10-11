@@ -1,0 +1,95 @@
+nhsnunitid,nhsnunitname,inpatient,icu,tok_index,unitcategory
+1,24-Hour Observation Area,0,0,2,0
+3,Administrative Areas,0,0,3,0
+4,Adult Step Down Unit (post-critical care),1,0,4,Step-down/Telemetry/Mixed Acuity
+8,Allergy Clinic,0,0,5,0
+9,Ambulatory Surgery Center,0,0,6,0
+11,Behavioral Health Clinic,0,0,7,0
+16,Burn Critical Care,1,1,8,0
+17,Cardiac Catheterization Room/Suite,1,0,9,0
+22,Cesarean Section Room/Suite,1,0,10,0
+28,Emergency Department,0,0,11,0
+29,Endoscopy Suite,0,0,12,0
+43,Infusion Center,0,0,13,0
+45,Adolescent Behavioral Health Ward,1,0,14,0
+46,Behavioral Health/Psych Ward,1,0,15,0
+48,Ear/Nose/Throat Ward,1,0,16,0
+51,Gerontology Ward,1,0,17,0
+52,Gynecology Ward,1,0,18,Labor and Delivery/Post-partum/GYN
+53,Inpatient Hospice,1,0,19,0
+54,Jail Unit,1,0,20,0
+55,Pediatric Medical Ward,1,0,21,Pediatric Ward
+56,Medical Ward,1,0,22,Adult Medical/Surgical Ward
+57,Medical/Surgical Ward,1,0,23,Adult Medical/Surgical Ward
+58,Neurology Ward,1,0,24,Specialty Ward
+59,Neurosurgical Ward,1,0,25,Specialty Ward
+60,Operating Room/Suite,1,0,26,0
+63,Orthopedic Ward,1,0,27,Specialty Ward
+68,Pediatric Medical/Surgical Ward,1,0,28,Pediatric Ward
+69,Pediatric Neurology Ward,1,0,29,0
+72,Pediatric Rehabilitation Ward - Within ACH,1,0,30,0
+73,Pediatric Surgical Ward,1,0,31,0
+75,Postpartum Ward,1,0,32,Labor and Delivery/Post-partum/GYN
+76,Pulmonary Ward,1,0,33,Specialty Ward
+77,Rehabilitation Ward - Within ACH,1,0,34,Specialty Ward
+79,Surgical Ward,1,0,35,Adult Medical/Surgical Ward
+80,Vascular Surgery Ward,1,0,36,Specialty Ward
+81,Well Baby Nursery (Level I),1,0,37,Neonatal Unit
+82,Interventional Radiology,1,0,38,0
+83,Labor and Delivery Ward,1,0,39,Labor and Delivery/Post-partum/GYN
+84,"Labor, Delivery, Recovery, Postpartum Suite (LDRP)",1,0,40,Labor and Delivery/Post-partum/GYN
+86,Location outside facility,0,0,41,0
+91,Chronic Care Unit,1,0,42,Specialty Ward
+92,Medical Cardiac Critical Care,1,1,43,Adult Critical Care
+93,Medical Critical Care,1,1,44,Adult Critical Care
+94,Medical/Surgical Critical Care,1,1,45,Adult Critical Care
+97,Mobile Emergency Services/EMS,0,0,46,0
+100,Neonatal Critical Care (Level III),1,1,47,Neonatal Unit
+101,Neonatal Critical Care(Level II/III),1,1,48,Neonatal Unit
+102,Neurologic Critical Care,1,1,49,Adult Critical Care
+104,Neurosurgical Critical Care,1,1,50,0
+112,Hematology/Oncology Clinic,0,0,51,0
+119,Post-Anesthesia Care Unit,0,0,52,0
+125,Pediatric Cardiothoracic Critical Care,1,1,53,Pediatric Critical Care
+131,Pediatric Emergency Department,0,0,54,0
+135,Pediatric Medical Critical Care,1,1,55,0
+136,Pediatric Medical/Surgical Critical Care,1,1,56,Pediatric Critical Care
+144,Pediatric Step Down Unit (post-critical care),1,0,57,Pediatric Ward
+151,Podiatry Clinic,0,0,58,0
+152,Post-Anesthesia Care Unit/Recovery Room,1,0,59,0
+154,Prenatal Critical Care,1,1,60,0
+158,Radiology (includes Nuclear Medicine),0,0,61,0
+159,Respiratory Critical Care,1,1,62,0
+165,Solid Organ Transplant SCA,1,0,63,Hematology/Oncology/Transplant Ward
+169,Step down Neonatal Nursery (Level II),1,0,64,Neonatal Unit
+170,Surgical Cardiothoracic Critical Care,1,1,65,Adult Critical Care
+171,Surgical Critical Care,1,1,66,Adult Critical Care
+172,Surgical Services Clinic,0,0,67,0
+174,Trauma Critical Care,1,1,68,0
+176,Ventilator Dependent Unit,1,0,69,0
+179,Wound Center,0,0,70,0
+182,Telemetry Ward,1,0,71,Step-down/Telemetry/Mixed Acuity
+184,Pediatric Mixed Acuity Unit,1,0,72,Pediatric Ward
+185,Mixed Age Mixed Acuity Unit,1,0,73,Step-down/Telemetry/Mixed Acuity
+191,LTCF Skilled Nursing/Short Term Rehabilitation Unit,1,0,74,0
+192,LTCF General Nursing Unit,1,0,75,0
+193,LTCF Ventilator Dependent Unit,1,0,76,0
+199,Rehabilitation Ward - Freestanding IRF,1,0,77,Specialty Ward
+200,Rehabilitation Pediatric Ward - Freestanding IRF,1,0,78,0
+201,Outpatient Hemodialysis Clinic,0,0,79,0
+205,ONC Medical Critical Care,1,1,80,0
+211,ONC Leukemia/Lymphoma Ward,1,0,81,0
+212,ONC Solid Tumor Ward,1,0,82,0
+213,ONC Hematopoietic Stem Cell Transplant Ward,1,0,83,Hematology/Oncology/Transplant Ward
+214,ONC General Hematology/Oncology Ward,1,0,84,Hematology/Oncology/Transplant Ward
+215,Antenatal Care Ward,1,0,85,0
+216,ONC Pediatric Hematopoietic Stem Cell Transplant Ward,1,0,86,Hematology/Oncology/Transplant Ward
+217,ONC Pediatric General Hematology/Oncology Ward,1,0,87,Hematology/Oncology/Transplant Ward
+218,ONC Step Down Unit,1,0,88,0
+219,Adult Mixed Acuity Unit,1,0,89,Step-down/Telemetry/Mixed Acuity
+223,Bone Marrow Transplant SCA,1,0,90,Hematology/Oncology/Transplant Ward
+224,Hematology/Oncology SCA,1,0,91,Hematology/Oncology/Transplant Ward
+228,Outpatient Operating Room/Suite (Attached),0,0,92,0
+300,Neonatal Critical Care (Level IV),1,1,93,0
+998,Acute Home Care,0,0,94,0
+999,Unknown,0,0,95,0
