@@ -4,12 +4,8 @@ from run_experiments import *
 def get_user_input():
         
     year_dict = {
-        'a':2016,
-        'b':2017,
-        'c':2018,
-        'd':2019,
-        'e':2020,
-        'f':2021
+        'a':'precov',
+        'b':'postcov'       
     }
     agecat_dict = {
         'a':'adult',
@@ -20,39 +16,34 @@ def get_user_input():
         'b':'test',
         'c':'both'
     }
-    choice = input('\nEnter your choice: \na. Train \nb. Test \nc. Both (Train & Test)\n')
-    if(choice not in operation_dict):
+    op_choice = input('\nEnter your choice: \na. Train \nb. Test \nc. Both (Train & Test)\n')
+    if(op_choice not in operation_dict):
         print('Invalid input! Please select a,b or c')
         exit(1)    	
     else:
-        print('You selected to ', operation_dict[choice])
+        print('You selected to ', operation_dict[op_choice])
         
-    input_year = input('\nSelect a year: \na. 2016 \nb. 2017 \nc. 2018 \nd. 2019 \ne. 2020 \nf. 2021 \n') 
+    input_year = input('\nSelect timeline: \na. Pre-COVID \nb. Post-COVID\n') 
     
     if(input_year not in year_dict):
-        print('Invalid input! Please select a,b,c,d,e or f')
+        print('Invalid input! Please select a or b')
         exit(1)
     else:
-        print('You selected year: ', year_dict[input_year])
+        print('You selected timeline: ', year_dict[input_year], ' for ', operation_dict[op_choice])
         
     trained_model_year = None
-    if(choice == 'b'):
-        input_trained_model_year = input('\nSelect year for the trained model: \na. 2016 \nb. 2017 \nc. 2018 \nd. 2019 \ne. 2020 \nf. 2021 \n')
-        if(input_trained_model_year not in year_dict):
-            print('Invalid input! Please select a,b,c,d,e or f')
-            exit(1)
-        else:
-            trained_model_year = year_dict[input_trained_model_year]
-            print('You selected trained model on year: ', trained_model_year)
+    if(op_choice == 'b'):       
+        trained_model_year = year_dict[input_year]
+        print('Loading trained model fora ', trained_model_year)
 
     input_age_cat = input('\nSelect age category: a. Adult b. Children\n')
     if(input_age_cat not in agecat_dict):
         print('Invalid input! Please select a or b')
         exit(1)
     else:
-        print('You selected age category is: ', agecat_dict[input_age_cat])
+        print('You selected age category ', agecat_dict[input_age_cat])
         
-    op, year, age_cat = operation_dict[choice], year_dict[input_year], agecat_dict[input_age_cat]  
+    op, year, age_cat = operation_dict[op_choice], year_dict[input_year], agecat_dict[input_age_cat]  
 
     return op, year, age_cat, trained_model_year
     
@@ -60,6 +51,7 @@ def get_user_input():
 def main():
     
     operation, year, age_cat, trained_model_year =  get_user_input()
+    # year, age_cat, operation = 'precov', 'adult', 'train'
     data_filters = {
             'adm_year':year, 
             'age_cat':age_cat
@@ -68,8 +60,8 @@ def main():
     if(operation == 'train'):
         train_model(filters=data_filters)
     elif(operation == 'test'):
-        model_path = '../saved_model/model_mt_adult_year'+str(trained_model_year)        
-        test_size=0.1        
+        model_path = '../saved_model/model_mt_adult_year_'+str(trained_model_year)        
+        test_size=1 # take the full dataset for test      
         datahandler = get_datahandler(data_filters)
         _, test_pid = datahandler.get_pid(test_size=test_size)
         test_model(datahandler, test_pid, trained_model_year, model_path=model_path)
