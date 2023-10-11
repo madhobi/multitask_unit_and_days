@@ -14,7 +14,9 @@ The model inputs get updated on a daily basis and generates prediction according
 
 ## Data
 
-The dataset contains six years of health records starting from January 2016 and December 2021. Considering the execution time for training and testing, we have divided it for each year resulting in six datasets. 
+The dataset contains six years of health records starting from January 2016 and December 2021. We split the dataset for pre-COVID and post-COVID. We further split the dataset for adult and pediatric patients as they have separate care units inside the hospital.
+
+The data folder holds small synthetic datasets for the purpose of running the program. We have added a few dummy patients and their corresponding bedflow data. The features of the toy data are similar to the original data. We have added dummy diagnostics and unit transfer sequence for the patients.
 
 ## Running the code
 
