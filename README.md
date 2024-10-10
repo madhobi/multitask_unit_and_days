@@ -26,4 +26,10 @@ The starting point of the code is main.py. It takes the user input and then goes
 
 Since there are two different types of tasks, our evaluation metrics are set accordingly. Prediction of next unit label is a classification task, our evaluation metrics for this task are accuracy and top-k accuracy (k=2). Prediction of remaining length of stay is a regression task, our evaluation metrics in this case is mean absolute error, mean squared error and root mean squared error. The MAE and Top-k accuracy values are plotted and saved in the image folder to show the model performance on test data. The history of the training time is saved in the hist_log folder.
 
+### Citation
+
+When referring to this paper, please cite:
+
+Kaniz Madhobi, Eric Lofgren, Ananth Kalyanaraman. A multi-task learning approach for predicting spatio-temporal patient variables.  Proc. 15th ACM Conference on Bioinformatics, Computational Biology, and Health Informatics (ACM-BCB '24), Accepted/In Press, 2024.
+
 
